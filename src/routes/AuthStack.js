@@ -12,7 +12,7 @@ export default function AuthStack({navigation}) {
     <Stack.Navigator
       initialRouteName="Checkout"
       screenOptions={{
-        headerStyle: {backgroundColor: '#e6195e'},
+        headerStyle: {backgroundColor: '#f96332'},
         headerTintColor: 'white',
         headerTitleStyle: {
           fontWeight: 'bold',

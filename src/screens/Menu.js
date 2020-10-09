@@ -110,8 +110,8 @@ export default function Menu({navigation}) {
               containerStyle={{backgroundColor: '#3c3c3b'}}>
               <FontAwesome5
                 name="cart-plus"
-                color="#b00040"
-                size={22}
+                color="#B25838"
+                size={20}
                 containerStyle={{marginRight: 3}}
               />
               <ListItem.Content>

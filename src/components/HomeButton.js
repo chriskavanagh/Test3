@@ -1,27 +1,35 @@
 import React from 'react';
 import {Button} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
+import {View, StyleSheet} from 'react-native';
 
 export default (props) => {
   const navigation = useNavigation();
 
   return (
-    <Button
-      onPress={() => navigation.navigate('Menu')}
-      title="Order Online!"
-      type="outline"
-      buttonStyle={{
-        borderColor: 'gray',
-        borderWidth: 4,
-        width: 380,
-        marginTop: 16,
-        borderRadius: 10,
-      }}
-      titleStyle={{color: '#fb005f', fontSize: 18}}
-    />
+    <View style={styles.btnContainer}>
+      <Button
+        onPress={() => navigation.navigate('Menu')}
+        title="Order Online!"
+        type="outline"
+        buttonStyle={{
+          borderColor: 'gray',
+          borderWidth: 4,
+          width: 380,
+          marginTop: 16,
+          borderRadius: 10,
+        }}
+        titleStyle={{color: '#f96332', fontSize: 18}}
+      />
+    </View>
   );
 };
 
+const styles = StyleSheet.create({
+  btnContainer: {
+    marginBottom: 20,
+  },
+});
 /* export default () => {
   const navigation = useNavigation();
   return (

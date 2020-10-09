@@ -13,7 +13,7 @@ export default function AuthStack({navigation}) {
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
-        headerStyle: {backgroundColor: '#e6195e'},
+        headerStyle: {backgroundColor: '#ff6229'},
         headerTintColor: 'white',
         headerTitleStyle: {
           fontWeight: 'bold',

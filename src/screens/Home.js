@@ -18,7 +18,7 @@ function MyButton({navigation}) {
         onPress={() => console.log('Facebook')}
         style={styles.mybutton}>
         <View style={styles.wrapper}>
-          <Icon name="facebook" size={25} color="#b41430" />
+          <Icon name="facebook" size={25} color="#f96332" />
         </View>
       </TouchableOpacity>
 
@@ -26,7 +26,7 @@ function MyButton({navigation}) {
         onPress={() => console.log('Twitter')}
         style={styles.mybutton}>
         <View style={styles.wrapper}>
-          <Icon name="twitter" size={25} color="#b41430" />
+          <Icon name="twitter" size={25} color="#f96332" />
         </View>
       </TouchableOpacity>
 
@@ -34,7 +34,7 @@ function MyButton({navigation}) {
         onPress={() => console.log('Instagram')}
         style={styles.mybutton}>
         <View style={styles.wrapper}>
-          <Icon name="instagram" size={25} color="#b41430" />
+          <Icon name="instagram" size={25} color="#f96332" />
         </View>
       </TouchableOpacity>
     </View>
@@ -48,6 +48,8 @@ export default function HomePage({navigation}) {
       <MyButton />
       <View style={styles.imgContainer}>
         <Text style={styles.titleTxt}>Chinese/Japanese Cuisine</Text>
+        <Text style={styles.txt}>5207 Bernard Dr</Text>
+        <Text style={styles.txt}>Roanoke, VA 24018</Text>
         <Text style={styles.txt}>Saki, Beer, Wine, Mixed Drinks</Text>
         <Text style={styles.txt}>Sushi Bar</Text>
         <HomeButton />
@@ -63,27 +65,27 @@ const styles = StyleSheet.create({
     padding: 2,
   },
   titleTxt: {
-    color: 'white',
-    fontSize: 20,
-    fontFamily: 'nunito-bold',
-    fontWeight: 'bold',
-    marginBottom: 5,
+    color: '#F5F5F5',
+    fontSize: 21,
+    //fontFamily: "nunito-bold",
+    marginBottom: 8,
+    marginTop: -8,
   },
   txt: {
-    color: 'white',
+    color: '#c4c4c4',
     fontSize: 16,
-    fontFamily: 'nunito-bold',
-    fontWeight: 'bold',
+    //fontFamily: "nunito-italic",
     marginTop: 0,
-    marginBottom: 7,
+    marginBottom: 8,
   },
   imgContainer: {
-    padding: 20,
+    padding: 10,
     borderRadius: 15,
     textAlign: 'center',
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 10,
   },
 
   iconStyle: {

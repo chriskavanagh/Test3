@@ -18,7 +18,7 @@ function FilterLink({dispatch, action, children}) {
         }}
         titleStyle={{marginLeft: 5, color: 'black', fontWeight: 'bold'}}
         style={styles.subText}
-        icon={<Icon name="search" size={17} color="#580020" />}
+        icon={<Icon name="search" size={17} color="#994C30" />}
         title={children}
         type="outline"
         onPress={() => {

@@ -10,7 +10,7 @@ export default function FoodStack({navigation}) {
     <Stack.Navigator
       initialRouteName="Cart"
       screenOptions={{
-        headerStyle: {backgroundColor: '#e6195e'},
+        headerStyle: {backgroundColor: '#f96332'},
         headerTintColor: 'white',
         headerTitleStyle: {
           fontWeight: 'bold',
