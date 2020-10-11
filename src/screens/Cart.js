@@ -7,7 +7,6 @@ import ListItemSeperator from '../components/ListItemSeperator';
 import ListEmptyComp from '../components/ListEmptyComp';
 import ListHeaderComp from '../components/ListHeaderComp';
 import ListItemDelete from '../components/ListItemDelete';
-//import { removeItem } from "../redux/actions/cartActions";
 import ListItemFooter from '../components/ListItemFooter';
 
 export default function Cart({navigation}) {
@@ -36,7 +35,7 @@ export default function Cart({navigation}) {
         <Button
           title="Checkout"
           type="outline"
-          buttonStyle={{borderColor: '#B00040'}}
+          buttonStyle={{borderColor: '#B25838'}}
           titleStyle={{color: '#fff'}}
           onPress={() => navigation.navigate('Checkout', {items: cart})}
         />

@@ -7,8 +7,20 @@ import NumericInput from 'react-native-numeric-input';
 import {useSelector, useDispatch} from 'react-redux';
 //import takeoutsquare from '../../assets/pics/takeoutsquare.png';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {StyleSheet, View, Modal, Text, ScrollView, Image} from 'react-native';
+import {StyleSheet, View, Modal, Text, ScrollView} from 'react-native';
 
+const Seperator = () => {
+  return (
+    <View
+      style={{
+        height: 1,
+        width: '100%',
+        backgroundColor: 'white',
+        marginVertical: 20,
+      }}
+    />
+  );
+};
 export default function MenuModal(props) {
   const [quantity, setQuantity] = React.useState(1);
   const [notes, setNotes] = React.useState('');
@@ -74,10 +86,12 @@ export default function MenuModal(props) {
           <View
             style={{paddingHorizontal: 10, paddingVertical: 5, width: '100%'}}>
             <Button
-              title="MenuModal Dev Branch"
+              title="Add Item To Your Cart"
               type="outline"
               onPress={() => myaddItem(props.item.id, quantity, notes)}
             />
+            <Seperator />
+            <Button title="Go Back" type="outline" onPress={props.close} />
 
             {/* <Snackbar
               visible={visible}

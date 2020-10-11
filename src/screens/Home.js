@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     //fontFamily: "nunito-bold",
     marginBottom: 8,
-    marginTop: -8,
+    marginTop: -19,
   },
   txt: {
     color: '#c4c4c4',

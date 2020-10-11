@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
     marginBottom: 5,
     borderBottomWidth: 2,
-    borderBottomColor: '#B00040',
+    borderBottomColor: '#B25838',
     color: '#FFFAF0',
     fontFamily: 'nunito-italic',
   },
