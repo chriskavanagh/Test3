@@ -1,4 +1,4 @@
-//import {createSelector} from 'reselect';
+import {createSelector} from 'reselect';
 
 //  selectors (using reselect to memoize)
 export const allSelector = createSelector(

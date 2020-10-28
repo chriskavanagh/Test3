@@ -25,10 +25,33 @@ import {
   filterPork,
   filterVegetable,
 } from '../store/actions/menuActions';
+//import {createSelector} from 'reselect';
+import {
+  allSelector,
+  soupSelector,
+  beefSelector,
+  poultrySelector,
+  seafoodSelector,
+  porkSelector,
+  vegetableSelector,
+  chefSelector,
+} from '../store/selectors';
 
 export default function Menu({navigation}) {
   const myState = useSelector((state) => state.menuReducer.items);
-  const user = useSelector((state) => state.userReducer.user);
+
+  // Memoized selector with Reselect
+  const getAll = useSelector((state) => allSelector(state));
+  const getSoup = useSelector((state) => soupSelector(state));
+  const getBeef = useSelector((state) => beefSelector(state));
+  const getChef = useSelector((state) => chefSelector(state));
+  const getPoultry = useSelector((state) => poultrySelector(state));
+  const getPork = useSelector((state) => porkSelector(state));
+  const getSeafood = useSelector((state) => seafoodSelector(state));
+  const getVegetable = useSelector((state) => vegetableSelector(state));
+
+  // get user from Redux
+  //const user = useSelector((state) => state.userReducer.user);
 
   // FontAwesome5 use (https://github.com/oblador/react-native-vector-icons/blob/master/FONTAWESOME5.md#usage)
   //const icon = <FontAwesome5 name={'cart-plus'} size={27} color={'#580000'} />;
@@ -59,7 +82,7 @@ export default function Menu({navigation}) {
         <Icon
           name="swap"
           size={24}
-          color="black"
+          color="orange"
           style={{marginTop: 1, marginLeft: 5}}
         />
 

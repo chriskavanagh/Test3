@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 
 function FilterLink({dispatch, action, children}) {
-  console.log(`FliterLink Render`);
   return (
     <TouchableOpacity style={{marginHorizontal: 3, marginBottom: 15}}>
       <Button

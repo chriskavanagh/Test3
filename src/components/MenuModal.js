@@ -1,13 +1,18 @@
 import React from 'react';
 import AppTextInput from './AppTextInput';
-//import {Snackbar} from 'react-native-paper';
 import {Button} from 'react-native-elements';
 import {addItem} from '../store/actions/cartActions';
-import NumericInput from 'react-native-numeric-input';
 import {useSelector, useDispatch} from 'react-redux';
 //import takeoutsquare from '../../assets/pics/takeoutsquare.png';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {StyleSheet, View, Modal, Text, ScrollView} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
+import {
+  StyleSheet,
+  View,
+  Modal,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 
 const Seperator = () => {
   return (
@@ -26,12 +31,18 @@ export default function MenuModal(props) {
   const [notes, setNotes] = React.useState('');
   const [visible, setVisible] = React.useState(false);
 
+  function increase(quantity) {
+    setQuantity(quantity + 1);
+  }
+
+  function decrease(quantity) {
+    setQuantity(quantity >= 2 ? quantity - 1 : quantity);
+  }
+
   // redux dispatch & selector
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
   const user = useSelector((state) => state.userReducer.user);
-  //console.log(user);
-  //console.log(cart);
 
   // toggle for snackbar
   //const onToggleSnackBar = () => setVisible(!visible);
@@ -48,7 +59,7 @@ export default function MenuModal(props) {
 
   return (
     <Modal visible={props.isVisible}>
-      <Icon name="close" size={36} onPress={props.close} />
+      <Icon name="close" size={36} onPress={props.close} padding={20} />
       <ScrollView>
         <View style={styles.container}>
           {/* <Image source={takeoutsquare} style={styles.img} /> */}
@@ -59,19 +70,27 @@ export default function MenuModal(props) {
           </Text>
 
           <Text style={{fontSize: 22, marginBottom: 10}}>Quantity</Text>
-          <View>
-            <NumericInput
-              type="plus-minus"
-              minValue={1}
-              maxValue={10}
-              value={quantity}
-              onChange={(value) => setQuantity(value)}
-              totalWidth={220}
-              totalHeight={50}
-              iconSize={25}
-              rightButtonBackgroundColor="#0000FF"
-              leftButtonBackgroundColor="#FF0000"
-            />
+          <View style={styles.numContainer}>
+            <TouchableOpacity>
+              <Icon
+                name="minuscircleo"
+                size={34}
+                color="#343a40"
+                onPress={() => decrease(quantity)}
+              />
+            </TouchableOpacity>
+            <Text
+              style={{marginHorizontal: 10, fontSize: 18, fontWeight: 'bold'}}>
+              {quantity}
+            </Text>
+            <TouchableOpacity>
+              <Icon
+                name="pluscircleo"
+                size={34}
+                color="#343a40"
+                onPress={() => increase(quantity)}
+              />
+            </TouchableOpacity>
           </View>
           <View style={{paddingHorizontal: 10}}>
             <AppTextInput
@@ -145,5 +164,9 @@ const styles = StyleSheet.create({
     width: 110,
     height: 110,
     marginBottom: 25,
+  },
+  numContainer: {
+    flexDirection: 'row',
+    padding: 5,
   },
 });
