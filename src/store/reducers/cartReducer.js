@@ -4,6 +4,7 @@ const initialState = {
   items: data.items,
   cart: [],
   subTotal: +(0).toFixed(2),
+  total: +(0).toFixed(2),
 };
 
 function cartReducer(state = initialState, action) {
@@ -29,6 +30,8 @@ function cartReducer(state = initialState, action) {
           ),
           // subTotal: state.subTotal + addedItem.price,
           subTotal: state.subTotal + existed_item.price,
+          total: (state.subTotal +=
+            (state.subTotal + existed_item.price) * 0.093),
         };
       } else {
         addedItem.quantity = action.payload.quantity;
@@ -42,6 +45,7 @@ function cartReducer(state = initialState, action) {
           cart: [...state.cart, addedItem],
           //subTotal: newTotal + tax, // this works
           subTotal: newTotal,
+          total: (newTotal += newTotal * 0.093),
         };
       }
     case 'ADD_QUANTITY':
@@ -56,6 +60,7 @@ function cartReducer(state = initialState, action) {
             : item,
         ),
         subTotal: state.subTotal + add_cart_item.price,
+        total: (state.subTotal += state.subTotal * 0.093),
       };
     case 'REMOVE_ITEM':
       let inCart = state.cart.find((item) => action.payload.id === item.id);
@@ -64,6 +69,7 @@ function cartReducer(state = initialState, action) {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload.id),
         subTotal: state.subTotal - itemTotal,
+        total: (state.subTotal += state.subTotal * 0.093),
       };
     case 'REMOVE_QUANTITY':
       let sub_cart_item = state.cart.find(
@@ -81,6 +87,7 @@ function cartReducer(state = initialState, action) {
             : item,
         ),
         subTotal: state.subTotal - sub_cart_item.price,
+        total: state.subTotal - sub_cart_item.price * 0.093,
       };
 
     default:

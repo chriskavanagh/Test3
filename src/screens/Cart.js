@@ -11,6 +11,8 @@ import ListItemFooter from '../components/ListItemFooter';
 
 export default function Cart({navigation}) {
   const [quantity, setQuantity] = React.useState(1);
+  const [totalPrice, setTotalPrice] = React.useState(0);
+  console.log(`Cart Comp - ${totalPrice}`);
   const cart = useSelector((state) => state.cartReducer.cart);
 
   return (

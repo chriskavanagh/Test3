@@ -1,16 +1,21 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {StyleSheet, Text, View} from 'react-native';
+import store from '../store/store';
 
 export default function Total() {
+  const finaltotal = useSelector((state) => state.cartReducer.total);
+  console.log(finaltotal);
   const sub = useSelector((state) => state.cartReducer.subTotal);
   const tax = sub * 0.093;
   const total = sub + tax;
+
   return (
     <View style={styles.container}>
       <Text style={styles.txt}>Subtotal: ${sub.toFixed(2)}</Text>
       <Text style={styles.tax}>Tax: ${tax.toFixed(2)}</Text>
       <Text style={styles.total}>Total: ${total.toFixed(2)}</Text>
+      <Text style={styles.total}>Total: ${finaltotal}</Text>
     </View>
   );
 }

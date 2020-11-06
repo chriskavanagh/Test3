@@ -1,5 +1,5 @@
 import {initialState} from '../data';
-import {createSelector} from 'reselect';
+//import {createSelector} from 'reselect';
 
 function menuReducer(state = initialState, action) {
   switch (action.type) {

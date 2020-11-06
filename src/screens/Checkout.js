@@ -1,15 +1,17 @@
 import React, {PureComponent} from 'react';
+import {useSelector} from 'react-redux';
 import {StyleSheet, View, Text, Alert} from 'react-native';
 import stripe from 'tipsi-stripe';
 import Button from '../components/Button';
 import axios from 'axios';
+import {connect} from 'react-redux';
 //import TabNavigator from './Routes/TabNavigator';
 
 stripe.setOptions({
   publishableKey: `pk_test_51HTJOZJpGJGqUhHBUgpeQdMdC3AdxHmJnTNdJpAWpnk3zVKgAC2KkKhhbrrhASpx2ZSwr2tiDkoravwyngTH0MDl00WhfLJPzE`,
 });
 
-export default class CardFormScreen extends PureComponent {
+class CardFormScreen extends PureComponent {
   static title = 'Card Form';
 
   state = {
@@ -45,13 +47,17 @@ export default class CardFormScreen extends PureComponent {
   };
 
   makePayment = async () => {
+    const {total} = this.props;
+    const newTotal = total * 100;
+    const finalTotal = Math.floor(newTotal);
+    console.log(total);
     this.setState({loading: true});
     axios({
       method: 'POST',
       url:
         'https://us-central1-stripeproject-3e2a7.cloudfunctions.net/completePaymentWithStripe',
       data: {
-        amount: 10050,
+        amount: finalTotal,
         currency: 'usd',
         token: this.state.token,
       },
@@ -63,12 +69,14 @@ export default class CardFormScreen extends PureComponent {
 
   render() {
     const {loading, token} = this.state;
+    const {total} = this.props;
 
     return (
       <>
         <View style={styles.container}>
-          <Text style={styles.header}>Card Form Example</Text>
+          <Text style={styles.header}>Test</Text>
           <Text style={styles.instruction}>
+            <Text>{total}</Text>
             Click button to show Card Form dialog.
           </Text>
           <Button
@@ -92,6 +100,8 @@ export default class CardFormScreen extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({total: state.cartReducer.total});
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -112,3 +122,5 @@ const styles = StyleSheet.create({
     height: 20,
   },
 });
+
+export default connect(mapStateToProps)(CardFormScreen);

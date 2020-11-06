@@ -3,7 +3,7 @@ import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 
-function FilterLink({dispatch, action, children}) {
+export default function FilterLink({dispatch, action, children}) {
   return (
     <TouchableOpacity style={{marginHorizontal: 3, marginBottom: 15}}>
       <Button
@@ -17,7 +17,7 @@ function FilterLink({dispatch, action, children}) {
         }}
         titleStyle={{marginLeft: 5, color: 'black', fontWeight: 'bold'}}
         style={styles.subText}
-        icon={<Icon name="search" size={17} color="#994C30" />}
+        icon={<Icon name="search" size={18} color="#580000" />}
         title={children}
         type="outline"
         onPress={() => {
@@ -32,10 +32,8 @@ const styles = StyleSheet.create({
   subText: {
     marginBottom: 8,
     marginTop: 8,
-    width: 110,
+    width: 10,
     marginHorizontal: 5,
     textAlign: 'center',
   },
 });
-
-export default React.memo(FilterLink);
