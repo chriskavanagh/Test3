@@ -1,5 +1,6 @@
 import {initialState as data} from '../data';
 
+// this is the correct verion with totals working!
 const initialState = {
   items: data.items,
   cart: [],
