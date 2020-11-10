@@ -1,13 +1,13 @@
 import React from 'react';
-import ListItem from '../components/ListItem';
-import {Button} from 'react-native-elements';
 import {useSelector} from 'react-redux';
+import {Button} from 'react-native-elements';
+import ListItem from '../components/ListItem';
 import {StyleSheet, View, FlatList} from 'react-native';
-import ListItemSeperator from '../components/ListItemSeperator';
 import ListEmptyComp from '../components/ListEmptyComp';
 import ListHeaderComp from '../components/ListHeaderComp';
 import ListItemDelete from '../components/ListItemDelete';
 import ListItemFooter from '../components/ListItemFooter';
+import ListItemSeperator from '../components/ListItemSeperator';
 
 export default function Cart({navigation}) {
   const [quantity, setQuantity] = React.useState(1);

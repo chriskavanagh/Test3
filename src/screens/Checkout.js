@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react';
-import {useSelector} from 'react-redux';
 import {StyleSheet, View, Text, Alert} from 'react-native';
 import stripe from 'tipsi-stripe';
 import Button from '../components/Button';

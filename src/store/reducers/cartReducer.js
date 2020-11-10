@@ -20,7 +20,9 @@ function cartReducer(state = initialState, action) {
       if (existed_item) {
         console.log(`Existing ${JSON.stringify(existed_item)}`);
         //existed_item.quantity += 1;
-        // let tax = state.subTotal * 0.093;
+        let tax = state.subTotal * 0.093;
+        let sub = state.subTotal + existed_item.price;
+        let final = sub + tax;
         return {
           ...state,
           cart: state.cart.map((item) =>
@@ -30,8 +32,7 @@ function cartReducer(state = initialState, action) {
           ),
           // subTotal: state.subTotal + addedItem.price,
           subTotal: state.subTotal + existed_item.price,
-          total: (state.subTotal +=
-            (state.subTotal + existed_item.price) * 0.093),
+          total: final,
         };
       } else {
         addedItem.quantity = action.payload.quantity;
@@ -52,6 +53,9 @@ function cartReducer(state = initialState, action) {
       let add_cart_item = state.cart.find(
         (item) => action.payload.id === item.id,
       );
+      let tax = (state.subTotal + add_cart_item.price) * 0.093;
+      let sub = state.subTotal + add_cart_item.price;
+      let final = tax + sub;
       return {
         ...state,
         cart: state.cart.map((item) =>
@@ -60,21 +64,29 @@ function cartReducer(state = initialState, action) {
             : item,
         ),
         subTotal: state.subTotal + add_cart_item.price,
-        total: (state.subTotal += state.subTotal * 0.093),
+        total: final,
       };
     case 'REMOVE_ITEM':
       let inCart = state.cart.find((item) => action.payload.id === item.id);
       let itemTotal = inCart.quantity * inCart.price.toFixed(2);
+      //let tax = (state.subTotal - inCart.price) * 0.093;
+      let RIsub = state.subTotal - itemTotal;
+      let RItax = RIsub * 0.093;
+      let RIfinal = RIsub + RItax;
+
       return {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload.id),
         subTotal: state.subTotal - itemTotal,
-        total: (state.subTotal += state.subTotal * 0.093),
+        total: RIfinal,
       };
     case 'REMOVE_QUANTITY':
       let sub_cart_item = state.cart.find(
         (item) => action.payload.id === item.id,
       );
+      let Rtax = (state.subTotal - sub_cart_item.price) * 0.093;
+      let Rsub = state.subTotal - sub_cart_item.price;
+      let Rfinal = Rtax + Rsub;
       return {
         ...state,
         cart: state.cart.map((item) =>
@@ -87,7 +99,7 @@ function cartReducer(state = initialState, action) {
             : item,
         ),
         subTotal: state.subTotal - sub_cart_item.price,
-        total: state.subTotal - sub_cart_item.price * 0.093,
+        total: Rfinal,
       };
 
     default:
